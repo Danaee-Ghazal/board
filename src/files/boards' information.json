@@ -1,0 +1,15 @@
+[
+  {
+    "id": 0,
+    "deviceID": "rasp-pi-pico",
+    "firmwareVersion": "2.1.0",
+    "processor": "Cortex M0"
+  },
+
+  {
+    "id": 1,
+    "deviceID": "rasp-pi-",
+    "firmwareVersion": "2.1.1",
+    "processor": "Cortex M2"
+  }
+]
