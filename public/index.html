@@ -26,18 +26,84 @@
     -->
     <title>React App</title>
   </head>
+  <script src="https://accounts.google.com/gsi/client" async></script>
+  <script>
+    // Credential response handler function
+    function handleCredentialResponse(response) {
+      // Post JWT token to server-side
+      fetch("auth_init.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          request_type: "user_auth",
+          credential: response.credential,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.status == 1) {
+            let responsePayload = data.pdata;
+
+            // Display the user account data
+            let profileHTML =
+              "<h3>Welcome " +
+              responsePayload.given_name +
+              '! <a href="javascript:void(0);" onclick="signOut(' +
+              responsePayload.sub +
+              ');">Sign out</a></h3>';
+            profileHTML +=
+              '<img src="' +
+              responsePayload.picture +
+              '"/><p><b>Auth ID: </b>' +
+              responsePayload.sub +
+              "</p><p><b>Name: </b>" +
+              responsePayload.name +
+              "</p><p><b>Email: </b>" +
+              responsePayload.email +
+              "</p>";
+            document.getElementsByClassName("pro-data")[0].innerHTML =
+              profileHTML;
+
+            document.querySelector("#btnWrap").classList.add("hidden");
+            document.querySelector(".pro-data").classList.remove("hidden");
+          }
+        })
+        .catch(console.error);
+    }
+
+    // Sign out the user
+    function signOut(authID) {
+      document.getElementsByClassName("pro-data")[0].innerHTML = "";
+      document.querySelector("#btnWrap").classList.remove("hidden");
+      document.querySelector(".pro-data").classList.add("hidden");
+    }
+  </script>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div class="Container">
+      <!-- Sign In With Google button with HTML data attributes API -->
+      <div
+        id="g_id_onload"
+        data-client_id="465562680061-sk6v9r0i8cr3ocsk3i0063m3ajvkf8lp.apps.googleusercontent.com.apps.googleusercontent.com"
+        data-context="signin"
+        data-ux_mode="popup"
+        data-callback="handleCredentialResponse"
+        data-auto_prompt="false"
+      ></div>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+      <div
+        class="g_id_signin"
+        data-type="standard"
+        data-shape="rectangular"
+        data-theme="outline"
+        data-text="signin_with"
+        data-size="large"
+        data-logo_alignment="left"
+      ></div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+      <!-- Display the user's profile info -->
+      <div class="pro-data hidden"></div>
+    </div>
   </body>
 </html>
