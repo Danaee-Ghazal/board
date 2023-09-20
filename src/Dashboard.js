@@ -1,4 +1,5 @@
 import React from "react";
+import jwt_decode from "jwt-decode";
 import { GoogleLogin } from "@react-oauth/google";
 // import { googleLogout } from "@react-oauth/google";
 import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -9,7 +10,7 @@ export default function Dashboard() {
   const clientId =
     "465562680061-sk6v9r0i8cr3ocsk3i0063m3ajvkf8lp.apps.googleusercontent.com";
   const showUserInformation = (response) => {
-    console.log(response);
+    console.log(jwt_decode(response));
   };
   // const onBtnClick = (e) => {
   //   e.preventDefault();
