@@ -7,7 +7,7 @@ import { useLoader } from "@react-three/fiber";
 
 function ShowDashboard(props) {
   function Scene() {
-    const obj = useLoader(OBJLoader, "./rpi_L.obj");
+    const obj = useLoader(OBJLoader, "./public/raspberry/source/rpi_L.obj");
     return <primitive object={obj} />;
   }
   // function CallShowinfo(event) {
