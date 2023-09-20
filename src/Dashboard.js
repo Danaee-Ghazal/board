@@ -1,6 +1,6 @@
 import React from "react";
 import jwt_decode from "jwt-decode";
-import { GoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 // import { googleLogout } from "@react-oauth/google";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import "./Dashboard.css";
@@ -9,9 +9,13 @@ import "./Dashboard.css";
 export default function Dashboard() {
   const clientId =
     "465562680061-sk6v9r0i8cr3ocsk3i0063m3ajvkf8lp.apps.googleusercontent.com";
-  const showUserInformation = (response) => {
-    console.log(jwt_decode(response.credential.email));
-  };
+  // const showUserInformation = (response) => {
+  //   console.log(jwt_decode(response.credential.email));
+  // };
+  const login = useGoogleLogin({
+    onSuccess: (response) => console.log(jwt_decode(response.credential)),
+    flow: "auth-code",
+  });
   // const onBtnClick = (e) => {
   //   e.preventDefault();
   //   googleLogout();
@@ -28,12 +32,7 @@ export default function Dashboard() {
   return (
     <GoogleOAuthProvider clientId={clientId}>
       <div className="Dashboard">
-        <GoogleLogin
-          onSuccess={showUserInformation}
-          onError={() => {
-            console.log("Login Failed");
-          }}
-        />
+        <button onClick={() => login()}>Sign in with Google 🚀 </button>;
         {/* <button onClick={onBtnClick}>Logout</button> */}
         {/* <form onSubmit={handleSubmit}>
         <div className="row">
