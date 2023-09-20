@@ -6,13 +6,13 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import "./Dashboard.css";
 // import ShowDashboard from "./ShowDashboard";
 // import CheckEmail from "./CheckEmail";
-import Component from "./Component";
+// import Component from "./Component";
 export default function Dashboard() {
   const clientId =
     "465562680061-sk6v9r0i8cr3ocsk3i0063m3ajvkf8lp.apps.googleusercontent.com";
   const showUserInformation = (response) => {
-    console.log(jwt_decode(response.credential));
-    <Component data={response.credential} />;
+    console.log(jwt_decode(response.email));
+    // <Component data={response.credential} />;
   };
   // const onBtnClick = (e) => {
   //   e.preventDefault();
