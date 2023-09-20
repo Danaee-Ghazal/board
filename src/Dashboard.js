@@ -16,7 +16,7 @@ export default function Dashboard() {
     console.log(jwt_decode(response.credential));
     console.log(typeof JSON.parse(jwt_decode(response.credential)).email);
     // setEmail(String(JSON.parse(jwt_decode(response.credential)).email));
-    // <CheckEmail data={email} />;
+    <CheckEmail />;
   };
   // const onBtnClick = (e) => {
   //   e.preventDefault();
@@ -33,7 +33,6 @@ export default function Dashboard() {
           }}
         />
       </GoogleOAuthProvider>
-      <CheckEmail />
     </div>
   );
 }
