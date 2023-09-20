@@ -12,7 +12,7 @@ export default function Dashboard() {
     "465562680061-sk6v9r0i8cr3ocsk3i0063m3ajvkf8lp.apps.googleusercontent.com";
   const showUserInformation = (response) => {
     let obj = JSON.stringify(jwt_decode(response.credential));
-    console.log(obj.email);
+    console.log(obj);
     // <Component data={response.credential} />;
   };
   // const onBtnClick = (e) => {
