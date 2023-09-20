@@ -1,26 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ShowDashboard.css";
-import Showinfo from "./Showinfo";
-import model from "./pictures/model.png";
-import { useGLTF, Stage, PresentationControls } from "@react-three/drei";
+// import Showinfo from "./Showinfo";
+// import model from "./pictures/model.png";
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
+import { useLoader } from "@react-three/fiber";
 
 function ShowDashboard(props) {
-  function Model(props) {
-    const { scene } = useGLTF("./public/raspberry/source/rpi_L.obj");
-    return <primitive object={scene} {...props} />;
+  function Scene() {
+    const obj = useLoader(OBJLoader, "./public/raspberry/source/rpi_L.obj");
+    return <primitive object={obj} />;
   }
-
   // function CallShowinfo(event) {
   //   event.preventDefault();
   //   return <Showinfo />;
   // }
-  const [showChildComp, setShowChildComp] = useState(false);
-  const onBtnClick = (e) => {
-    e.preventDefault();
-    setShowChildComp((prevState) => !prevState);
-  };
+  // const [showChildComp, setShowChildComp] = useState(false);
+  // const onBtnClick = (e) => {
+  //   e.preventDefault();
+  //   setShowChildComp((prevState) => !prevState);
+  // };
   return (
     <div className="ShowDashboard">
+      {Scene}
       {/* <img
         src={model}
         alt="model-3d"
@@ -28,24 +29,6 @@ function ShowDashboard(props) {
         className="img-fluid"
       />
       {showChildComp && <Showinfo />} */}
-
-      <Canvas
-        dpr={[1, 2]}
-        shadows
-        camera={{ fav: 45 }}
-        style={{ position: "absolute" }}
-      >
-        <PresentationControls
-          speed={1.5}
-          global
-          zoom={0.5}
-          polar={[-0.1, Math.PI / 4]}
-        >
-          <Stage environment={null}>
-            <Model scale={0.01} />
-          </Stage>
-        </PresentationControls>
-      </Canvas>
     </div>
   );
   // return (
