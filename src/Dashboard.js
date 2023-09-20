@@ -15,7 +15,6 @@ export default function Dashboard() {
     "465562680061-sk6v9r0i8cr3ocsk3i0063m3ajvkf8lp.apps.googleusercontent.com";
   const showUserInformation = (response) => {
     console.log(jwt_decode(response.credential));
-    console.log(typeof JSON.parse(jwt_decode(response.credential)).email);
     // setEmail(String(JSON.parse(jwt_decode(response.credential)).email));
     setShowChildComp((prevState) => !prevState);
   };
