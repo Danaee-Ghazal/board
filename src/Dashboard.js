@@ -6,7 +6,6 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import "./Dashboard.css";
 // import ShowDashboard from "./ShowDashboard";
 import CheckEmail from "./CheckEmail";
-// import Component from "./Component";
 export default function Dashboard() {
   const [email, setEmail] = useState("");
   const clientId =
