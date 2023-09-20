@@ -1,15 +1,20 @@
 import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
-import { googleLogout } from "@react-oauth/google";
+// import { googleLogout } from "@react-oauth/google";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import "./Dashboard.css";
 // import ShowDashboard from "./ShowDashboard";
 // import CheckEmail from "./CheckEmail";
 export default function Dashboard() {
-  const onBtnClick = (e) => {
-    e.preventDefault();
-    googleLogout();
+  const clientId =
+    "465562680061-sk6v9r0i8cr3ocsk3i0063m3ajvkf8lp.apps.googleusercontent.com";
+  const showUserInformation = (response) => {
+    console.log(response);
   };
+  // const onBtnClick = (e) => {
+  //   e.preventDefault();
+  //   googleLogout();
+  // };
   // const [email, setEmail] = useState("");
   // function handleSubmit(event) {
   //   event.preventDefault();
@@ -20,17 +25,15 @@ export default function Dashboard() {
   //   setEmail(event.target.value);
   // }
   return (
-    <GoogleOAuthProvider clientId="465562680061-sk6v9r0i8cr3ocsk3i0063m3ajvkf8lp.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={clientId}>
       <div className="Dashboard">
         <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            console.log(credentialResponse);
-          }}
+          onSuccess={showUserInformation}
           onError={() => {
             console.log("Login Failed");
           }}
         />
-        <button onClick={onBtnClick}>Logout</button>
+        {/* <button onClick={onBtnClick}>Logout</button> */}
         {/* <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="col-9">
