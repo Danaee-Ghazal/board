@@ -1,6 +1,7 @@
 import "./App.css";
 import Dashboard from "./Dashboard";
 import "bootstrap/dist/css/bootstrap.css";
+import "./Web.config";
 
 function App() {
   return (
