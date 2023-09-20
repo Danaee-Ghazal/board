@@ -5,7 +5,7 @@ export default function CheckEmail(props) {
   if (true) {
     return (
       <div className="CheckEmail">
-        Account is valid.
+        Account {props.data} is valid.
         <ShowDashboard />
       </div>
     );

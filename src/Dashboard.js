@@ -36,7 +36,7 @@ export default function Dashboard() {
             console.log("Login Failed");
           }}
         />
-        <CheckEmail data={email} />;
+        <CheckEmail data={email} />
         {/* <button onClick={onBtnClick}>Logout</button> */}
         {/* <form onSubmit={handleSubmit}>
         <div className="row">
