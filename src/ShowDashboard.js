@@ -19,7 +19,12 @@ function ShowDashboard(props) {
   // Scene();
   return (
     <div className="ShowDashboard">
-      <img src={model} alt="model-3d" onClick={onBtnClick} />
+      <img
+        src={model}
+        alt="model-3d"
+        onClick={onBtnClick}
+        className="img-fluid"
+      />
       {showChildComp && <Showinfo />}
     </div>
   );
