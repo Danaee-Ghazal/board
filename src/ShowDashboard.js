@@ -21,7 +21,7 @@ function ShowDashboard(props) {
   // };
   return (
     <div className="ShowDashboard">
-      {Scene}
+      {Scene()}
       {/* <img
         src={model}
         alt="model-3d"
