@@ -24,16 +24,14 @@ export default function Dashboard() {
   // };
 
   return (
-    <div>
+    <div className="Dashboard">
       <GoogleOAuthProvider clientId={clientId}>
-        <div className="Dashboard">
-          <GoogleLogin
-            onSuccess={showUserInformation}
-            onError={() => {
-              console.log("Login Failed");
-            }}
-          />
-        </div>
+        <GoogleLogin
+          onSuccess={showUserInformation}
+          onError={() => {
+            console.log("Login Failed");
+          }}
+        />
       </GoogleOAuthProvider>
       <CheckEmail />
     </div>
