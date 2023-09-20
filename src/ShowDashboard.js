@@ -19,9 +19,9 @@ function ShowDashboard(props) {
   //   e.preventDefault();
   //   setShowChildComp((prevState) => !prevState);
   // };
+  Scene();
   return (
     <div className="ShowDashboard">
-      {Scene()}
       {/* <img
         src={model}
         alt="model-3d"
